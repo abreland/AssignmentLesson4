@@ -1,0 +1,22 @@
+library(dplyr)
+
+
+ train= read.table("UCI HAR Dataset/train/X_train.txt")
+test= read.table("UCI HAR Dataset/test/X_test.txt")
+combo <- rbind(test,train)
+features = read.table("UCI HAR Dataset/features.txt")
+names(combo) <- features[,"V2"]
+combo2 <- combo[, grep("std|mean", names(combo))]
+names(combo2) <- gsub("^t", "timeDomain", names(combo2))
+ names(combo2) <-gsub("^f", "frequencyDomain", names(combo2))
+ 
+ 
+ 
+ subject <- rbind(subject_test,subject_train)
+  y_ <- rbind(y_test,y_train)
+  
+   names(new)[1] <- "subjectNumber"
+  names(new)[2] <- "activityType" 
+  
+  
+df <- aggregate(x=v, by=list(v$subjectNumber,v$activityType), FUN="mean")

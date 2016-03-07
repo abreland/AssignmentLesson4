@@ -1,5 +1,4 @@
 
-
 processData<-function(){
 train= read.table("UCI HAR Dataset/train/X_train.txt")
 test= read.table("UCI HAR Dataset/test/X_test.txt")
@@ -18,5 +17,5 @@ names(new)[1] <- "subjectNumber"
 names(new)[2] <- "activityType"
 df <- aggregate(x=new, by=list(new$subjectNumber,new$activityType), FUN="mean")
 df <- df[,3:83]
-write.table(df, "step4out.txt", sep="\t")
+write.table(df, "step4out.txt", sep="\t", row.name=FALSE)
 }
